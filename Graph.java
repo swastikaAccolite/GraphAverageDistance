@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 public class Graph {
     private int node;
     private ArrayList<Edge>[] adjacent;
@@ -13,8 +12,8 @@ public class Graph {
         int destination;
         int weight;
 
-        public Edge(int source, int destination, int weight) {
-            this.source = source;
+        public Edge( int destination, int weight) {
+          //  this.source = source;
             this.destination = destination;
             this.weight = weight;
         }
@@ -34,8 +33,11 @@ public class Graph {
     public void addnode(String src, String dest, int wt) {
         int source = hashcode.get(src);
         int destination = hashcode.get(dest);
-        Edge edge = new Edge(source, destination, wt);
+        Edge edge = new Edge(destination, wt);
         adjacent[source].add(edge);
+        Edge edge1 = new Edge(source,wt);
+        adjacent[destination].add(edge1);
+
     }
     private void depthFirstSearch(int src, int dest, boolean[] visit, List<Integer> locPath) {
         if(src == dest) {
